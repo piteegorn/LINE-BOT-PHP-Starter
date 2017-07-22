@@ -44,6 +44,10 @@ $events = json_decode($content, true);
 		}
 	}
 }*/
+
+$dbLock = 'xxxx
+aaa
+bb';
 if (!is_null($events['events'])) {
 	// Loop through each event
 	foreach ($events['events'] as $event) {
@@ -55,10 +59,10 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 
 			// Build message to reply back
-			if ($text == 'show database lock') {
+			if ($text == 'show db lock') {
 				$messages = [
 					'type' => 'text',
-					'text' => 'xxxx'
+					'text' => $dbLock
 				];
 
 			}else{
