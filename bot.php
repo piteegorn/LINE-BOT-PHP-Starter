@@ -45,9 +45,11 @@ $events = json_decode($content, true);
 	}
 }*/
 
-$dbLock = 'xxxx
-aaa
-bb';
+$dbLock = 'sid 1 10:21
+sid 2 11:23
+sid 3 12:40';
+
+$worker = '100 persons';
 if (!is_null($events['events'])) {
 	// Loop through each event
 	foreach ($events['events'] as $event) {
@@ -59,16 +61,22 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 
 			// Build message to reply back
-			if ($text == 'show db lock') {
+			if ($text == 'show dbl') {
 				$messages = [
 					'type' => 'text',
 					'text' => $dbLock
 				];
 
-			}else{
+			}elseif ($text == 'worker') {
 				$messages = [
 					'type' => 'text',
-					'text' => $text
+					'text' => $worker
+				];
+			}
+			else{
+				$messages = [
+					'type' => 'text',
+					'text' => 'Command not found'
 				];
 
 			}
